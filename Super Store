@@ -20,6 +20,7 @@ VALUES
     (9, 'Air Purifier', 'Appliances', 129.50, 35, 4.6),
     (10, 'Premium Coffee Maker', 'Kitchen Supplies', 79.99, 50, 4.9),
 
+#Use a SELECT statement to order the items by PRICE.
 SELECT*FROM superstore
 ORDER BY price DESC;
 
