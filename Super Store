@@ -24,25 +24,32 @@ VALUES
 SELECT*FROM superstore
 ORDER BY price DESC;
 
+#Show a statistic (SUM) about the item prices.
 SELECT SUM(price) AS total_price
 FROM superstore;
 
+#Show a statistic (AVG) about the item prices.
 SELECT AVG(price) AS average_price
 FROM superstore;
 
+#Show a statistic (MIN) about the item prices.
 SELECT MIN(price) AS min_price
 FROM superstore;
 
+#Show a statistic (MAX) about the item prices.
 SELECT MAX(price) AS max_price
 FROM superstore;
 
+#Show a statistic (COUNT) about the item prices.
 SELECT COUNT(*) AS total_items
 FROM superstore;
 
+#Show a statistic (AVG) about the price for items in the category of "Kitchen Supplies".
 SELECT AVG(price) AS average_price_kitchen_supplies
 FROM superstore
 WHERE category = 'Kitchen Supplies';
 
+#Show a statistic about the stock quantity for a specific item: "Wireless Earbuds".
 SELECT stock_quantity
 FROM superstore
 WHERE item_name = 'Wireless Earbuds';
