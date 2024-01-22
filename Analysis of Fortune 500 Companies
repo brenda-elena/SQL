@@ -1,3 +1,5 @@
+--#This analysis is based on the following Fortune 500 dataset:
+
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
     company_name TEXT,
@@ -55,3 +57,47 @@ VALUES
     ('Company II', 'Telecommunications', 110.5, 2000, 1, 21, 12, 4.9),
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
+
+--#Analysis
+
+--#Show a quick view of all the information in this database:
+SELECT *
+FROM fortune_companies;
+
+--Show the companies based on their average employee tenure into three categories:
+SELECT
+CASE WHEN avg_employee_tenure <5 THEN 'Short Tenure'
+WHEN avg_employee_tenure >= 5 
+AND avg_employee_tenure < 7 THEN 'Medium Tenure'
+WHEN avg_employee_tenure >= 7 THEN 'Long Tenure'
+END AS tenure_category,
+COUNT(*) AS company_count
+FROM fortune_companies
+GROUP BY tenure_category;
+
+--Show companies and industries with an average revenue greater than 250 billion:
+SELECT company_name,industry,AVG(revenue) AS avg_revenue
+FROM fortune_companies
+GROUP BY industry,company_name
+HAVING AVG(revenue) > 250
+ORDER BY avg_revenue desc;
+
+--Show companies with more than 2,000 employees in the "Energy" industry:
+SELECT company_name,industry,employees
+FROM fortune_companies
+WHERE industry = 'Energy' AND employees > 2000
+ORDER BY employees asc;
+
+--Show the average and maximum number of paid time off days for companies in the "Retail" industry
+SELECT industry,
+ROUND(AVG(paid_time_off_days)) AS avg_paid_time_off,
+ROUND(MAX(paid_time_off_days)) AS max_paid_time_off
+FROM fortune_companies
+WHERE industry = 'Retail';
+
+--Show companies only from the "Telecommunications" industry that either have healthcare_benefits equal to 1 or have 10 or more maternity leave weeks
+SELECT company_name,industry,healthcare_benefits,maternity_leave_weeks
+FROM fortune_companies
+WHERE industry = 'Telecommunications' 
+AND (healthcare_benefits = 1 OR maternity_leave_weeks >= 10);
+
