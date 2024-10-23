@@ -37,14 +37,14 @@ INSERT INTO mutual_friend (friend1_id, friend2_id) VALUES
 
 SELECT singers.full_name, songs.song, songs.album
 FROM singers
-LEFT OUTER JOIN songs ON singers.id = songs.singer_id;
+LEFT OUTER JOIN songs ON singers.id = songs.singer_id
 
 /*Show pairs of singers who are mutual friends*/
 
 SELECT a.full_name AS singer1, b.full_name AS singer2
 FROM singers AS a
 JOIN mutual_friend AS mf ON a.id = mf.friend1_id
-JOIN singers AS b ON mf.friend2_id = b.id;
+JOIN singers AS b ON mf.friend2_id = b.id
 
 /*Show singers and their songs and order them by age*/
 
