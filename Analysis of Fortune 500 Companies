@@ -80,20 +80,20 @@ SELECT company_name,industry,AVG(revenue) AS avg_revenue
 FROM fortune_companies
 GROUP BY industry,company_name
 HAVING AVG(revenue) > 250
-ORDER BY avg_revenue desc;
+ORDER BY avg_revenue desc
 
 --#Show companies with more than 2,000 employees in the "Energy" industry:
 SELECT company_name,industry,employees
 FROM fortune_companies
 WHERE industry = 'Energy' AND employees > 2000
-ORDER BY employees asc;
+ORDER BY employees asc
 
 --#Show the average and maximum number of paid time off days for companies in the "Retail" industry
 SELECT industry,
 ROUND(AVG(paid_time_off_days)) AS avg_paid_time_off,
 ROUND(MAX(paid_time_off_days)) AS max_paid_time_off
 FROM fortune_companies
-WHERE industry = 'Retail';
+WHERE industry = 'Retail'
 
 --#Show companies only from the "Telecommunications" industry that either have healthcare_benefits equal to 1 or have 10 or more maternity leave weeks
 SELECT company_name,industry,healthcare_benefits,maternity_leave_weeks
